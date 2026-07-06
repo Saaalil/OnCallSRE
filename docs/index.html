@@ -6,7 +6,6 @@
     <title>Always-On-CallSRE — Documentation</title>
     <meta name="description" content="Autonomous multi-agent SRE platform powered by Gemini 2.5 Pro & MCP.">
     <link rel="stylesheet" href="style.css">
-    <!-- Using Newsreader for that elegant Claude-like serif, and Inter for sans -->
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,200..800&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,16 +13,15 @@
     <nav id="navbar">
         <div class="nav-inner">
             <div class="nav-left">
-                <!-- Claude-style star icon approximation -->
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-logo-icon">
                     <path d="M12 2v20M17 5l-10 14M22 12H2M19 17L5 7"></path>
                 </svg>
                 <a href="#hero" class="nav-logo">Always-On-CallSRE</a>
             </div>
             <div class="nav-links">
+                <a href="#story">The Story</a>
                 <a href="#architecture">Architecture</a>
                 <a href="#agents">Agents</a>
-                <a href="#workflow">Workflow</a>
                 <a href="#files">Codebase</a>
                 <a href="#integrate">Integration</a>
                 <a href="https://github.com/Saaalil/OnCallSRE" target="_blank" class="btn btn-nav">View on GitHub</a>
@@ -31,7 +29,7 @@
         </div>
     </nav>
 
-    <!-- Sub-nav divider area like Claude Platform -> Explore here -->
+    <!-- Sub-nav -->
     <div class="sub-nav">
         <div class="sub-nav-inner">
             <span class="sub-nav-breadcrumb">Platform</span>
@@ -46,32 +44,27 @@
                 <h1>Build on the<br>On-CallSRE Platform</h1>
                 <p class="hero-desc">Use our autonomous multi-agent system to create proactive, self-healing infrastructure with the most advanced AI models on the market.</p>
                 <div class="hero-actions">
-                    <a href="#architecture" class="btn btn-primary">Start exploring</a>
+                    <a href="#story" class="btn btn-primary">Start exploring</a>
                     <a href="https://github.com/Saaalil/OnCallSRE" target="_blank" class="btn btn-secondary">See developer docs</a>
                 </div>
             </div>
             <div class="hero-illustration">
-                <!-- Abstract Claude-like illustration -->
                 <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Clay shapes -->
                     <circle cx="280" cy="120" r="45" fill="var(--clay)" />
                     <rect x="250" y="210" width="80" height="80" rx="8" fill="var(--clay)" />
-                    <!-- Abstract hand-drawn white lines -->
-                    <path d="M280 120 L290 250" stroke="var(--text)" stroke-width="6" stroke-linecap="round" />
-                    <circle cx="280" cy="120" r="8" fill="var(--bg)" />
-                    <circle cx="290" cy="250" r="8" fill="var(--bg)" />
-                    
-                    <!-- Squiggly lines representing automation -->
-                    <path d="M120 280 C 120 150, 200 350, 240 280 C 260 220, 320 200, 360 280 C 390 350, 250 400, 220 300 C 200 240, 160 300, 140 280" stroke="var(--text)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M100 290 L100 230 C 110 210, 120 210, 120 230 L120 280" stroke="var(--text)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M140 290 L140 220 C 150 200, 160 200, 160 220 L160 280" stroke="var(--text)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M180 290 L180 210 C 190 190, 200 190, 200 210 L200 280" stroke="var(--text)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M280 120 L290 250" stroke="var(--text-primary)" stroke-width="6" stroke-linecap="round" />
+                    <circle cx="280" cy="120" r="8" fill="var(--bg-main)" />
+                    <circle cx="290" cy="250" r="8" fill="var(--bg-main)" />
+                    <path d="M120 280 C 120 150, 200 350, 240 280 C 260 220, 320 200, 360 280 C 390 350, 250 400, 220 300 C 200 240, 160 300, 140 280" stroke="var(--text-primary)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M100 290 L100 230 C 110 210, 120 210, 120 230 L120 280" stroke="var(--text-primary)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M140 290 L140 220 C 150 200, 160 200, 160 220 L160 280" stroke="var(--text-primary)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M180 290 L180 210 C 190 190, 200 190, 200 210 L200 280" stroke="var(--text-primary)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </div>
         </div>
     </section>
 
-    <!-- Integrations Logos (like Cursor, GenSpark etc on Claude) -->
+    <!-- Integrations Logos -->
     <section class="integrations">
         <div class="integrations-inner">
             <div class="integration-logo">Google Gemini 2.5 Pro</div>
@@ -82,25 +75,23 @@
         </div>
     </section>
 
-    <!-- Divider -->
     <div class="divider"></div>
 
-    <!-- The Problem -->
-    <section id="problem" class="section">
+    <!-- The Story (Problem & Solution) -->
+    <section id="story" class="section">
         <div class="section-inner">
             <div class="section-grid">
                 <div class="section-header">
-                    <h2>Modern SRE teams are overwhelmed.</h2>
-                    <p>Alert fatigue, 2 AM pages, and complex microservices lead to burnout and high MTTR.</p>
+                    <h2>The 2 AM Page.</h2>
+                    <p>It starts with a Slack ping. A critical service has degraded, and an engineer is woken up.</p>
                 </div>
-                <div class="section-content cards-grid">
-                    <div class="card">
-                        <h3>Alert Fatigue</h3>
-                        <p>Critical signals get lost in the noise of hundreds of daily alerts, delaying incident response.</p>
-                    </div>
-                    <div class="card">
-                        <h3>System Complexity</h3>
-                        <p>Dozens of interdependent services make manual root cause analysis extremely challenging for humans.</p>
+                <div class="section-content story-content">
+                    <p class="story-lead">Modern microservice architectures are incredibly powerful, but when things go wrong, they are notoriously difficult to debug.</p>
+                    <p>An engineer logs on at 2:00 AM. They are tired. They face hundreds of cascading alerts, noisy logs, and complex interdependent systems. They have to jump between Prometheus, Grafana, GitLab, and terminal windows just to form a basic hypothesis of what went wrong.</p>
+                    <p>Mean Time To Resolution (MTTR) stretches into hours. Burnout increases. Engineering velocity slows down.</p>
+                    <div class="story-highlight">
+                        <h3>We built Always-On-CallSRE to change this story.</h3>
+                        <p>Instead of waking up an engineer, an autonomous multi-agent system intercepts the alert. It pulls the metrics, analyzes the code history, forms a root cause hypothesis, writes the patch, validates it against security policies, and opens a Merge Request. <strong>By the time the engineer wakes up, the fix is already waiting for their approval.</strong></p>
                     </div>
                 </div>
             </div>
@@ -109,45 +100,105 @@
 
     <div class="divider"></div>
 
-    <!-- Architecture -->
+    <!-- Architecture Flowchart -->
     <section id="architecture" class="section">
         <div class="section-inner">
-            <div class="section-grid">
-                <div class="section-header">
-                    <h2>Hierarchical Orchestration.</h2>
-                    <p>A multi-tier, event-driven architecture that delegates complex root cause analysis to specialized subagents.</p>
-                </div>
-                <div class="section-content">
-                    <div class="arch-container">
-                        <div class="arch-tier">
-                            <div class="tier-label">1. Triggers</div>
-                            <div class="node-group">
-                                <div class="node">GitLab Webhook</div>
-                                <div class="node">Cron Scheduler</div>
-                            </div>
-                        </div>
-                        <div class="arch-tier tier-accent">
-                            <div class="tier-label">2. Orchestrator</div>
-                            <div class="node node-primary">Root Agent (Manager)</div>
-                        </div>
-                        <div class="arch-tier">
-                            <div class="tier-label">3. Primary Pipeline</div>
-                            <div class="node-group">
-                                <div class="node">Alert Intake</div>
-                                <div class="node">Observability</div>
-                                <div class="node node-accent">RCA Synthesis</div>
-                                <div class="node">Patch Generation</div>
-                                <div class="node">Deploy (MCP)</div>
-                            </div>
-                        </div>
-                        <div class="arch-tier">
-                            <div class="tier-label">4. Subagents</div>
-                            <div class="node-group">
-                                <div class="node">Code Analysis</div>
-                                <div class="node">Infrastructure</div>
-                            </div>
-                        </div>
+            <div class="section-header-full">
+                <h2>Hierarchical Orchestration</h2>
+                <p>Follow the incident lifecycle as the Orchestrator Agent delegates tasks sequentially and branches out to specialized subagents for deep analysis and deployment.</p>
+            </div>
+            
+            <div class="flowchart-container">
+                <!-- Trigger Node -->
+                <div class="fc-node-wrapper">
+                    <div class="fc-node fc-trigger">
+                        Observability / Webhook / Scheduler
                     </div>
+                    <div class="fc-line-down"></div>
+                </div>
+
+                <!-- Orchestrator -->
+                <div class="fc-node-wrapper">
+                    <div class="fc-node fc-orchestrator">
+                        Orchestrator Agent
+                        <span class="fc-file">root_agent.py</span>
+                    </div>
+                    <div class="fc-line-down"></div>
+                </div>
+
+                <!-- Vertical Pipeline -->
+                <div class="fc-pipeline">
+                    
+                    <!-- 1. Alert Intake -->
+                    <div class="fc-node-wrapper">
+                        <div class="fc-node">Alert Intake Agent</div>
+                        <div class="fc-line-down"></div>
+                    </div>
+
+                    <!-- 2. Observability -->
+                    <div class="fc-node-wrapper">
+                        <div class="fc-node">Observability Agent</div>
+                        <div class="fc-line-down"></div>
+                    </div>
+
+                    <!-- 3. RCA (Branches) -->
+                    <div class="fc-node-wrapper">
+                        <div class="fc-node fc-manager">Root Cause Analysis Agent</div>
+                        <!-- Branching out -->
+                        <div class="fc-branch-container">
+                            <div class="fc-branch-line">
+                                <div class="fc-branch-left"></div>
+                                <div class="fc-branch-right"></div>
+                            </div>
+                            <div class="fc-subnodes">
+                                <div class="fc-subnode-wrapper">
+                                    <div class="fc-line-down fc-short"></div>
+                                    <div class="fc-node fc-subagent">Code Analysis Subagent</div>
+                                    <div class="fc-line-down fc-short"></div>
+                                </div>
+                                <div class="fc-subnode-wrapper">
+                                    <div class="fc-line-down fc-short"></div>
+                                    <div class="fc-node fc-subagent">Infrastructure Subagent</div>
+                                    <div class="fc-line-down fc-short"></div>
+                                </div>
+                            </div>
+                            <div class="fc-branch-line-bottom">
+                                <div class="fc-branch-left"></div>
+                                <div class="fc-branch-right"></div>
+                            </div>
+                        </div>
+                        <div class="fc-line-down fc-short"></div>
+                        <div class="fc-node fc-hypothesis">Synthesized RCA Hypothesis</div>
+                        <div class="fc-line-down"></div>
+                    </div>
+
+                    <!-- 4. Fix Generation -->
+                    <div class="fc-node-wrapper">
+                        <div class="fc-node">Fix Generation Agent</div>
+                        <div class="fc-line-down"></div>
+                    </div>
+
+                    <!-- 5. Validation -->
+                    <div class="fc-node-wrapper">
+                        <div class="fc-node">Validation Agent</div>
+                        <div class="fc-line-down"></div>
+                    </div>
+
+                    <!-- 6. Deployment (Branches to MCP) -->
+                    <div class="fc-node-wrapper">
+                        <div class="fc-node fc-manager">Deployment Agent</div>
+                        <div class="fc-line-down fc-short"></div>
+                        <div class="fc-node fc-mcp">GitLab MCP Server</div>
+                        <div class="fc-line-down fc-short"></div>
+                        <div class="fc-node fc-hypothesis">Production Merge Request</div>
+                        <div class="fc-line-down"></div>
+                    </div>
+
+                    <!-- 7. Postmortem -->
+                    <div class="fc-node-wrapper">
+                        <div class="fc-node">Postmortem Agent</div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -155,48 +206,77 @@
 
     <div class="divider"></div>
 
-    <!-- Agent Roster -->
+    <!-- Agent Roster (Detailed) -->
     <section id="agents" class="section">
         <div class="section-inner">
             <div class="section-header-full">
                 <h2>The Agent Roster</h2>
-                <p>Eight specialized AI agents working together to detect, analyze, and resolve production incidents.</p>
+                <p>Each component operates autonomously with Gemini 2.5 Pro, possessing strict system prompts tailored for their specific role in the SRE lifecycle.</p>
             </div>
             
             <div class="agent-list">
                 <div class="agent-item">
-                    <div class="agent-num">01</div>
+                    <div class="agent-num">0</div>
                     <div class="agent-info">
                         <h3>Proactive Monitoring</h3>
+                        <div class="mono-tag">agents/monitoring_agent.py</div>
                         <p>Runs every 10 minutes. Fetches telemetry and asks Gemini for leading failure indicators. Triggers workflows before systems go down.</p>
                     </div>
                 </div>
                 <div class="agent-item">
-                    <div class="agent-num">02</div>
+                    <div class="agent-num">1</div>
                     <div class="agent-info">
                         <h3>Alert Intake</h3>
-                        <p>Parses incoming webhooks (GitLab pipelines, Prometheus). Classifies severity and structures alerts for downstream processing.</p>
+                        <div class="mono-tag">agents/alert_agent.py</div>
+                        <p>Parses incoming webhooks (GitLab pipelines, Prometheus alerts). Classifies severity and structures alerts for downstream processing.</p>
                     </div>
                 </div>
                 <div class="agent-item">
-                    <div class="agent-num">03</div>
+                    <div class="agent-num">2</div>
                     <div class="agent-info">
-                        <h3>Root Cause Analysis (Manager)</h3>
-                        <p>Assesses incident complexity. Delegates deep-dives to <strong>Code Analysis</strong> and <strong>Infrastructure</strong> subagents, then synthesizes their findings.</p>
+                        <h3>Observability Agent</h3>
+                        <div class="mono-tag">agents/observability_agent.py</div>
+                        <p>Interfaces with the MCP Server to pull metrics and Grafana dashboards. Injects simulated context (memory leaks, CPU spikes) for demo fallback.</p>
                     </div>
                 </div>
                 <div class="agent-item">
-                    <div class="agent-num">04</div>
+                    <div class="agent-num">3</div>
                     <div class="agent-info">
-                        <h3>Fix Generation & Validation</h3>
-                        <p>Writes production-grade code patches using Gemini. Runs simulated DevSecOps checks (SAST, unit tests) to ensure correctness.</p>
+                        <h3>RCA Manager Agent</h3>
+                        <div class="mono-tag">agents/rca_agent.py</div>
+                        <p>Assesses incident complexity. Delegates deep-dives to <strong>Code Analysis</strong> and <strong>Infrastructure</strong> subagents, then synthesizes their findings into a final hypothesis.</p>
                     </div>
                 </div>
                 <div class="agent-item">
-                    <div class="agent-num">05</div>
+                    <div class="agent-num">4</div>
                     <div class="agent-info">
-                        <h3>Deployment (MCP)</h3>
+                        <h3>Fix Generation Agent</h3>
+                        <div class="mono-tag">agents/fix_agent.py</div>
+                        <p>Writes production-grade code patches using Gemini based on the RCA hypothesis and the pulled codebase context.</p>
+                    </div>
+                </div>
+                <div class="agent-item">
+                    <div class="agent-num">5</div>
+                    <div class="agent-info">
+                        <h3>Validation Agent</h3>
+                        <div class="mono-tag">agents/validation_agent.py</div>
+                        <p>Runs simulated DevSecOps checks: SAST, dependency scanning, unit test validation, and code style compliance to ensure patch safety.</p>
+                    </div>
+                </div>
+                <div class="agent-item">
+                    <div class="agent-num">6</div>
+                    <div class="agent-info">
+                        <h3>Deployment Agent</h3>
+                        <div class="mono-tag">agents/deployment_agent.py</div>
                         <p>Interfaces with the GitLab MCP Server to automatically create a Merge Request containing the validated patch and RCA summary.</p>
+                    </div>
+                </div>
+                <div class="agent-item">
+                    <div class="agent-num">7</div>
+                    <div class="agent-info">
+                        <h3>Postmortem Agent</h3>
+                        <div class="mono-tag">agents/postmortem_agent.py</div>
+                        <p>Generates a comprehensive markdown incident postmortem including: timeline of events, root cause analysis, fix applied, blast radius, and preventive recommendations.</p>
                     </div>
                 </div>
             </div>
@@ -205,30 +285,90 @@
 
     <div class="divider"></div>
 
-    <!-- Codebase & Integration -->
-    <section id="integrate" class="section">
+    <!-- Codebase -->
+    <section id="files" class="section">
         <div class="section-inner">
             <div class="section-grid">
                 <div class="section-header">
-                    <h2>Integration Guide.</h2>
-                    <p>Deploy Always-On-CallSRE directly into your own infrastructure in minutes.</p>
-                    <a href="https://github.com/Saaalil/OnCallSRE" target="_blank" class="btn btn-secondary" style="margin-top: 1.5rem;">View repository</a>
+                    <h2>Codebase overview.</h2>
+                    <p>Understanding the repository structure and entrypoints.</p>
                 </div>
                 <div class="section-content">
-                    <div class="step">
-                        <h3>1. Clone & Install</h3>
+                    <div class="code-block">
+                        <div class="code-header">Root Files</div>
+                        <div class="code-item">
+                            <code>main.py</code>
+                            <p>The Flask web server entrypoint. Serves the dashboard UI, handles GitLab webhooks, and initializes the APScheduler background cron job.</p>
+                        </div>
+                        <div class="code-item">
+                            <code>requirements.txt / Dockerfile</code>
+                            <p>Dependencies (<code>google-genai</code>, <code>flask</code>, <code>mcp</code>) and containerization definitions for Cloud Run deployment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="code-block">
+                        <div class="code-header">Core Modules</div>
+                        <div class="code-item">
+                            <code>agents/llm_helper.py</code>
+                            <p>Centralized Gemini API wrapper. Manages all requests to <code>gemini-2.5-pro</code> with proper system prompting.</p>
+                        </div>
+                        <div class="code-item">
+                            <code>tools/gitlab_mcp_tools.py</code>
+                            <p>MCP client implementation using the Python <code>mcp</code> SDK. Connects to the GitLab MCP Server via stdio transport to open Merge Requests.</p>
+                        </div>
+                        <div class="code-item">
+                            <code>static/app.js & style.css</code>
+                            <p>Frontend dashboard logic. Handles polling, renders the mock terminal logs, and creates the typewriter animation effects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Integration -->
+    <section id="integrate" class="section">
+        <div class="section-inner">
+            <div class="section-header-full">
+                <h2>Integration Guide</h2>
+                <p>Deploy Always-On-CallSRE directly into your own infrastructure in minutes.</p>
+            </div>
+            
+            <div class="steps-list">
+                <div class="step-row">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <h3>Clone & Install</h3>
                         <pre><code>git clone https://github.com/Saaalil/OnCallSRE.git
 cd OnCallSRE
 pip install -r requirements.txt</code></pre>
                     </div>
-                    <div class="step">
-                        <h3>2. Configure Keys</h3>
-                        <pre><code># Create a .env file
-GEMINI_API_KEY=your_google_genai_api_key</code></pre>
+                </div>
+                <div class="step-row">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
+                        <h3>Configure Environment</h3>
+                        <p>Create a <code>.env</code> file in the root directory and add your <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a> key.</p>
+                        <pre><code>GEMINI_API_KEY=your_google_genai_api_key</code></pre>
                     </div>
-                    <div class="step">
-                        <h3>3. Connect MCP & Webhooks</h3>
-                        <p>Update <code>tools/gitlab_mcp_tools.py</code> with your GitLab MCP endpoint. Configure your GitLab project webhooks to point to your deployed Cloud Run URL.</p>
+                </div>
+                <div class="step-row">
+                    <div class="step-num">3</div>
+                    <div class="step-body">
+                        <h3>Connect GitLab MCP</h3>
+                        <p>To enable live MCP for creating real Merge Requests, update <code>tools/gitlab_mcp_tools.py</code>:</p>
+                        <pre><code># Uncomment the real MCP client code and remove the mock responses.
+# Requires: npx -y @modelcontextprotocol/server-gitlab</code></pre>
+                    </div>
+                </div>
+                <div class="step-row">
+                    <div class="step-num">4</div>
+                    <div class="step-body">
+                        <h3>Deploy & Webhooks</h3>
+                        <p>Deploy the Flask app to Google Cloud Run or AWS ECS. Configure your GitLab project webhooks to point to:</p>
+                        <pre><code>https://your-deployed-url/webhook/gitlab</code></pre>
                     </div>
                 </div>
             </div>
@@ -245,6 +385,7 @@ GEMINI_API_KEY=your_google_genai_api_key</code></pre>
                 Always-On-CallSRE
             </div>
             <div class="footer-links">
+                <a href="#story">The Story</a>
                 <a href="#architecture">Architecture</a>
                 <a href="#agents">Agents</a>
                 <a href="https://github.com/Saaalil/OnCallSRE" target="_blank">GitHub</a>
@@ -254,5 +395,6 @@ GEMINI_API_KEY=your_google_genai_api_key</code></pre>
             </div>
         </div>
     </footer>
+    <script src="app.js"></script>
 </body>
 </html>
