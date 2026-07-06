@@ -7,7 +7,7 @@ Instead of waking up human engineers at 2:00 AM to manually triage alert fatigue
 
 ---
 
-## 🌟 The Vision
+## The Vision
 
 Modern SRE and DevOps teams face severe alert fatigue, high Mean Time to Resolution (MTTR), and complex incident investigations. When production breaks, engineers spend critical hours hunting logs, correlating metrics, writing hotfixes, and documenting postmortems.
 
@@ -15,7 +15,7 @@ Modern SRE and DevOps teams face severe alert fatigue, high Mean Time to Resolut
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 The platform is designed around a multi-tier, event-driven multi-agent system:
 
@@ -54,7 +54,7 @@ Equipped with a background cron engine (`APScheduler`), a dedicated **Proactive 
 
 ---
 
-## 🤖 The Agent Roster
+## The Agent Roster
 
 1. **Proactive Monitoring Agent**: Continually runs background telemetry audits to capture anomalies early.
 2. **Alert Intake Agent**: Parses raw alert payloads (GitLab pipelines, Prometheus alerts) and categorizes impact and severity.
@@ -67,7 +67,7 @@ Equipped with a background cron engine (`APScheduler`), a dedicated **Proactive 
 
 ---
 
-## 💻 Tech Stack
+## Tech Stack
 
 * **Core**: Python 3.14 (Flask Backend)
 * **LLM Engine**: Google GenAI SDK (`gemini-2.5-pro` for dynamic reasoning and patch generation)
@@ -78,7 +78,7 @@ Equipped with a background cron engine (`APScheduler`), a dedicated **Proactive 
 
 ---
 
-## 🚀 Live Demo Features
+## Live Demo Features
 
 To facilitate a seamless hackathon pitch, the dashboard is equipped with:
 * **"Trigger Simulated Incident"**: Immediately triggers the reactive pipeline simulating a pipeline failure on a frontend service.
@@ -87,7 +87,7 @@ To facilitate a seamless hackathon pitch, the dashboard is equipped with:
 
 ---
 
-## 🛠️ Setup & Installation
+## Setup & Installation
 
 ### Prerequisites
 * Python 3.14+
