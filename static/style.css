@@ -1,0 +1,331 @@
+:root {
+    --bg-color: #0b0f19;
+    --card-bg: rgba(20, 27, 45, 0.6);
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --primary: #06b6d4;
+    --primary-glow: rgba(6, 182, 212, 0.4);
+    --secondary: #8b5cf6;
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.glow-bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, var(--primary-glow) 0%, transparent 25%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 20%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 2rem 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.icon {
+    font-size: 2.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+h1 span {
+    color: var(--primary);
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* Split Layout */
+.dashboard-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 1rem 2rem 4rem;
+}
+
+.left-pane {
+    flex: 1 1 60%;
+    min-width: 400px;
+}
+
+.right-pane {
+    flex: 1 1 35%;
+    min-width: 350px;
+    position: sticky;
+    top: 2rem;
+    height: calc(100vh - 12rem);
+}
+
+@media (max-width: 1024px) {
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
+    .right-pane {
+        position: relative;
+        top: 0;
+        height: 400px;
+        order: -1; /* Move terminal above on mobile */
+    }
+}
+
+.controls {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 20px var(--primary-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px var(--primary-glow);
+}
+
+.btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.status-text {
+    margin-top: 1rem;
+    color: var(--primary);
+    font-weight: 600;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Grid & Cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .span-2 {
+        grid-column: span 1;
+    }
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.8rem;
+}
+
+.badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    background: #334155;
+}
+
+.badge.rca, .badge.fix, .badge.val, .badge.post {
+    background: linear-gradient(135deg, var(--secondary), #d946ef);
+}
+
+.card h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.card-content {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    white-space: pre-wrap;
+}
+
+pre {
+    background: rgba(0,0,0,0.3);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: #a78bfa;
+}
+
+/* Typing cursor effect */
+.typing-container::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: var(--primary);
+}
+
+.typing-done::after {
+    display: none;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Terminal Window Styles */
+.terminal-window {
+    background: #0f1219;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.terminal-header {
+    background: #1e2430;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.term-title {
+    flex: 1;
+    text-align: center;
+    color: #8b9eb5;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    margin-right: 44px; /* to offset the dots and center text */
+}
+
+.terminal-body {
+    padding: 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: #a78bfa;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.term-line {
+    opacity: 0;
+    animation: fadeIn 0.2s forwards;
+}
+
+.term-line.info { color: #06b6d4; }
+.term-line.success { color: #10b981; }
+.term-line.warning { color: #ffbd2e; }
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}

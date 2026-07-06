@@ -1,0 +1,17 @@
+# Environment variables (CRITICAL: Prevents pushing API keys)
+.env
+
+# Python caches and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# OS generated files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,7 @@
+google-adk
+google-genai
+flask
+python-dotenv
+requests
+mcp
+apscheduler
