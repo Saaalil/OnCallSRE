@@ -6,516 +6,416 @@
     <title>Always-On-CallSRE — Documentation</title>
     <meta name="description" content="Autonomous multi-agent SRE platform powered by Gemini 2.5 Pro & MCP for proactive outage prediction, root cause diagnosis, and auto-healing.">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="bg-grid"></div>
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-    <div class="glow-orb orb-3"></div>
-
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-inner">
-            <a href="#hero" class="nav-logo">🤖 Always-On-Call<span>SRE</span></a>
+            <a href="#hero" class="nav-logo">Always-On-CallSRE</a>
             <div class="nav-links">
                 <a href="#architecture">Architecture</a>
                 <a href="#agents">Agents</a>
                 <a href="#workflow">Workflow</a>
                 <a href="#files">Codebase</a>
-                <a href="#integrate">Integrate</a>
-                <a href="https://github.com/Saaalil/OnCallSRE" target="_blank" class="nav-gh">★ GitHub</a>
+                <a href="#integrate">Integration</a>
+                <a href="https://github.com/Saaalil/OnCallSRE" target="_blank" class="nav-cta">GitHub ↗</a>
             </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero -->
     <section id="hero">
-        <div class="hero-content">
-            <div class="hero-badge">Built with Google Gemini 2.5 Pro & GitLab MCP</div>
-            <h1>Always-On-Call<span>SRE</span></h1>
-            <p class="hero-sub">Autonomous AI On-Call SRE Agent Platform</p>
-            <p class="hero-desc">A hierarchical multi-agent system that proactively monitors, diagnoses, patches, and deploys fixes for production outages — so your engineers don't have to wake up at 2 AM.</p>
-            <div class="hero-buttons">
-                <a href="#architecture" class="btn btn-primary">Explore Architecture</a>
-                <a href="https://github.com/Saaalil/OnCallSRE" target="_blank" class="btn btn-outline">View on GitHub</a>
-            </div>
-        </div>
-        <div class="hero-3d-scene">
-            <div class="cube-container">
-                <div class="cube">
-                    <div class="cube-face front">DETECT</div>
-                    <div class="cube-face back">DEPLOY</div>
-                    <div class="cube-face right">ANALYZE</div>
-                    <div class="cube-face left">PATCH</div>
-                    <div class="cube-face top">VALIDATE</div>
-                    <div class="cube-face bottom">REPORT</div>
-                </div>
+        <div class="hero-inner">
+            <div class="hero-eyebrow">Built with Google Gemini 2.5 Pro &amp; GitLab MCP</div>
+            <h1>Autonomous AI<br>On-Call SRE</h1>
+            <p class="hero-desc">A hierarchical multi-agent system that proactively monitors, diagnoses, patches, and deploys fixes for production outages—so your engineers don't have to wake up at 2 AM.</p>
+            <div class="hero-actions">
+                <a href="#architecture" class="btn btn-dark">Explore Architecture</a>
+                <a href="https://github.com/Saaalil/OnCallSRE" target="_blank" class="btn btn-outline">View on GitHub ↗</a>
             </div>
         </div>
     </section>
+
+    <!-- Divider -->
+    <div class="divider"></div>
 
     <!-- Problem Statement -->
     <section id="problem" class="section">
         <div class="section-inner">
-            <h2 class="section-title">The Problem</h2>
-            <div class="problem-grid">
-                <div class="problem-card card-3d">
-                    <div class="card-inner">
-                        <div class="card-icon">🔔</div>
-                        <h3>Alert Fatigue</h3>
-                        <p>Engineers receive hundreds of alerts daily. Critical signals get lost in the noise, leading to delayed incident response.</p>
-                    </div>
+            <div class="section-label">The Problem</div>
+            <h2 class="section-heading">Modern SRE teams are overwhelmed</h2>
+            <div class="cards-row">
+                <div class="card">
+                    <div class="card-icon">🔔</div>
+                    <h3>Alert Fatigue</h3>
+                    <p>Engineers receive hundreds of alerts daily. Critical signals get lost in the noise, leading to delayed incident response.</p>
                 </div>
-                <div class="problem-card card-3d">
-                    <div class="card-inner">
-                        <div class="card-icon">⏱️</div>
-                        <h3>High MTTR</h3>
-                        <p>Mean Time To Resolution averages 4+ hours for complex incidents. Manual log correlation across distributed systems is slow and error-prone.</p>
-                    </div>
+                <div class="card">
+                    <div class="card-icon">⏱</div>
+                    <h3>High MTTR</h3>
+                    <p>Mean Time To Resolution averages 4+ hours for complex incidents. Manual log correlation across distributed systems is slow.</p>
                 </div>
-                <div class="problem-card card-3d">
-                    <div class="card-inner">
-                        <div class="card-icon">🌐</div>
-                        <h3>System Complexity</h3>
-                        <p>Modern microservice architectures have dozens of interdependent services, making root cause analysis extremely challenging for humans.</p>
-                    </div>
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3>System Complexity</h3>
+                    <p>Modern microservice architectures have dozens of interdependent services, making root cause analysis extremely challenging.</p>
                 </div>
-                <div class="problem-card card-3d">
-                    <div class="card-inner">
-                        <div class="card-icon">😴</div>
-                        <h3>2 AM Pages</h3>
-                        <p>On-call engineers are woken in the middle of the night, leading to burnout, attrition, and degraded cognitive performance during critical incidents.</p>
-                    </div>
+                <div class="card">
+                    <div class="card-icon">😴</div>
+                    <h3>2 AM Pages</h3>
+                    <p>On-call engineers are woken in the middle of the night, leading to burnout, attrition, and degraded cognitive performance.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="divider"></div>
 
     <!-- Architecture -->
-    <section id="architecture" class="section section-dark">
+    <section id="architecture" class="section section-alt">
         <div class="section-inner">
-            <h2 class="section-title">System Architecture</h2>
-            <p class="section-desc">A multi-tier, event-driven, hierarchical agent platform with proactive monitoring and subagent delegation.</p>
-            <div class="arch-3d-wrapper">
-                <div class="arch-scene" id="arch-scene">
-                    <!-- Tier 1: Triggers -->
-                    <div class="arch-tier tier-triggers">
-                        <div class="tier-label">TRIGGERS</div>
-                        <div class="arch-node node-trigger" data-tooltip="GitLab webhooks on pipeline failure">
-                            <div class="node-icon">🔗</div>
-                            <div class="node-text">GitLab Webhook</div>
-                        </div>
-                        <div class="arch-node node-trigger" data-tooltip="APScheduler runs every 10 minutes">
-                            <div class="node-icon">⏰</div>
-                            <div class="node-text">Cron Scheduler</div>
-                        </div>
-                        <div class="arch-node node-trigger" data-tooltip="Manual button click on the dashboard">
-                            <div class="node-icon">🖱️</div>
-                            <div class="node-text">Dashboard UI</div>
-                        </div>
+            <div class="section-label">System Architecture</div>
+            <h2 class="section-heading">Multi-tier, event-driven agent platform</h2>
+            <p class="section-sub">A hierarchical orchestration engine with proactive monitoring and subagent delegation.</p>
+
+            <div class="arch-visual">
+                <!-- Tier 1 -->
+                <div class="arch-tier">
+                    <div class="tier-tag">Triggers</div>
+                    <div class="tier-nodes">
+                        <div class="arch-node"><span class="node-dot dot-green"></span>GitLab Webhook</div>
+                        <div class="arch-node"><span class="node-dot dot-amber"></span>Cron Scheduler</div>
+                        <div class="arch-node"><span class="node-dot dot-blue"></span>Dashboard UI</div>
                     </div>
-                    <!-- Connector -->
-                    <div class="arch-connector"><div class="connector-line"></div><div class="connector-pulse"></div></div>
-                    <!-- Tier 2: Orchestrator -->
-                    <div class="arch-tier tier-orchestrator">
-                        <div class="tier-label">ORCHESTRATOR</div>
-                        <div class="arch-node node-orch" data-tooltip="root_agent.py — Chains all agents sequentially">
-                            <div class="node-icon">🧠</div>
-                            <div class="node-text">Root Agent (Orchestrator)</div>
-                        </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+
+                <!-- Tier 2 -->
+                <div class="arch-tier tier-highlight">
+                    <div class="tier-tag">Orchestrator</div>
+                    <div class="tier-nodes">
+                        <div class="arch-node node-primary"><span class="node-dot dot-clay"></span>Root Agent <span class="mono">root_agent.py</span></div>
                     </div>
-                    <!-- Connector -->
-                    <div class="arch-connector"><div class="connector-line"></div><div class="connector-pulse"></div></div>
-                    <!-- Tier 3: Primary Agents -->
-                    <div class="arch-tier tier-agents">
-                        <div class="tier-label">PRIMARY AGENTS</div>
-                        <div class="agents-row">
-                            <div class="arch-node node-agent" data-tooltip="alert_agent.py — Parses severity & impact">
-                                <div class="node-icon">🚨</div>
-                                <div class="node-text">Alert</div>
-                            </div>
-                            <div class="arch-node node-agent" data-tooltip="observability_agent.py — Gathers Prometheus metrics">
-                                <div class="node-icon">📊</div>
-                                <div class="node-text">Observability</div>
-                            </div>
-                            <div class="arch-node node-agent node-rca" data-tooltip="rca_agent.py — Delegates to subagents for deep analysis">
-                                <div class="node-icon">🔍</div>
-                                <div class="node-text">RCA</div>
-                                <div class="subagent-indicator">+ Subagents</div>
-                            </div>
-                            <div class="arch-node node-agent" data-tooltip="fix_agent.py — Generates production-grade patches">
-                                <div class="node-icon">🔧</div>
-                                <div class="node-text">Fix Gen</div>
-                            </div>
-                            <div class="arch-node node-agent" data-tooltip="validation_agent.py — Security & correctness checks">
-                                <div class="node-icon">✅</div>
-                                <div class="node-text">Validate</div>
-                            </div>
-                            <div class="arch-node node-agent" data-tooltip="deployment_agent.py — Opens GitLab MR via MCP">
-                                <div class="node-icon">🚀</div>
-                                <div class="node-text">Deploy</div>
-                            </div>
-                            <div class="arch-node node-agent" data-tooltip="postmortem_agent.py — Writes incident report">
-                                <div class="node-icon">📝</div>
-                                <div class="node-text">Postmortem</div>
-                            </div>
-                        </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+
+                <!-- Tier 3 -->
+                <div class="arch-tier">
+                    <div class="tier-tag">Primary Agents</div>
+                    <div class="tier-nodes tier-wrap">
+                        <div class="arch-node"><span class="node-dot dot-green"></span>Alert</div>
+                        <div class="arch-node"><span class="node-dot dot-blue"></span>Observability</div>
+                        <div class="arch-node node-accent"><span class="node-dot dot-clay"></span>RCA <span class="subagent-badge">+ Subagents</span></div>
+                        <div class="arch-node"><span class="node-dot dot-amber"></span>Fix Gen</div>
+                        <div class="arch-node"><span class="node-dot dot-green"></span>Validate</div>
+                        <div class="arch-node"><span class="node-dot dot-blue"></span>Deploy</div>
+                        <div class="arch-node"><span class="node-dot dot-amber"></span>Postmortem</div>
                     </div>
-                    <!-- Connector -->
-                    <div class="arch-connector"><div class="connector-line"></div><div class="connector-pulse"></div></div>
-                    <!-- Tier 4: Subagents -->
-                    <div class="arch-tier tier-sub">
-                        <div class="tier-label">SUBAGENTS (RCA Delegation)</div>
-                        <div class="agents-row">
-                            <div class="arch-node node-sub" data-tooltip="Scans git history & application logs for code-level faults">
-                                <div class="node-icon">💻</div>
-                                <div class="node-text">Code Analysis</div>
-                            </div>
-                            <div class="arch-node node-sub" data-tooltip="Deep dives into CPU, memory, network, and DB metrics">
-                                <div class="node-icon">🏗️</div>
-                                <div class="node-text">Infrastructure</div>
-                            </div>
-                        </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+
+                <!-- Tier 4 -->
+                <div class="arch-tier">
+                    <div class="tier-tag">RCA Subagents</div>
+                    <div class="tier-nodes">
+                        <div class="arch-node"><span class="node-dot dot-clay"></span>Code Analysis Subagent</div>
+                        <div class="arch-node"><span class="node-dot dot-clay"></span>Infrastructure Subagent</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Agents Deep Dive -->
+    <div class="divider"></div>
+
+    <!-- Agent Roster -->
     <section id="agents" class="section">
         <div class="section-inner">
-            <h2 class="section-title">The Agent Roster</h2>
-            <p class="section-desc">Eight specialized AI agents, each with a distinct role in the incident lifecycle.</p>
-            <div class="agents-grid">
-                <div class="agent-card card-3d">
-                    <div class="card-inner">
-                        <div class="agent-num">0</div>
+            <div class="section-label">Agents</div>
+            <h2 class="section-heading">Eight specialized AI agents</h2>
+            <p class="section-sub">Each with a distinct role in the incident lifecycle, powered by Gemini 2.5 Pro.</p>
+
+            <div class="agent-list">
+                <div class="agent-row">
+                    <div class="agent-index">0</div>
+                    <div class="agent-body">
                         <h3>Proactive Monitoring Agent</h3>
-                        <p class="agent-file"><code>agents/monitoring_agent.py</code></p>
-                        <p>Runs every 10 minutes via APScheduler. Fetches the latest telemetry and asks Gemini 2.5 Pro: "Are there leading indicators of a failure?" If an anomaly is predicted, it autonomously triggers the full incident workflow <em>before</em> the system goes down.</p>
-                        <div class="agent-tag tag-proactive">Proactive</div>
+                        <div class="agent-file">agents/monitoring_agent.py</div>
+                        <p>Runs every 10 minutes via APScheduler. Fetches the latest telemetry and asks Gemini: "Are there leading indicators of a failure?" If an anomaly is predicted, it autonomously triggers the full incident workflow <em>before</em> the system goes down.</p>
+                        <span class="tag tag-green">Proactive</span>
                     </div>
                 </div>
-                <div class="agent-card card-3d">
-                    <div class="card-inner">
-                        <div class="agent-num">1</div>
+                <div class="agent-row">
+                    <div class="agent-index">1</div>
+                    <div class="agent-body">
                         <h3>Alert Intake Agent</h3>
-                        <p class="agent-file"><code>agents/alert_agent.py</code></p>
-                        <p>Parses incoming webhook payloads (GitLab pipeline failures, Prometheus alerts). Uses Gemini to classify severity (P1-P4), identify the affected service, and produce a structured alert summary for downstream agents.</p>
-                        <div class="agent-tag tag-reactive">Reactive</div>
+                        <div class="agent-file">agents/alert_agent.py</div>
+                        <p>Parses incoming webhook payloads (GitLab pipeline failures, Prometheus alerts). Uses Gemini to classify severity (P1–P4), identify the affected service, and produce a structured alert summary for downstream agents.</p>
+                        <span class="tag">Reactive</span>
                     </div>
                 </div>
-                <div class="agent-card card-3d">
-                    <div class="card-inner">
-                        <div class="agent-num">2</div>
+                <div class="agent-row">
+                    <div class="agent-index">2</div>
+                    <div class="agent-body">
                         <h3>Observability Agent</h3>
-                        <p class="agent-file"><code>agents/observability_agent.py</code></p>
-                        <p>Interfaces with the MCP Server to pull Prometheus metrics and Grafana dashboards. If the MCP connection fails, it gracefully falls back to a rich simulated Prometheus payload (memory leak scenario) for demo purposes.</p>
-                        <div class="agent-tag tag-reactive">Reactive</div>
+                        <div class="agent-file">agents/observability_agent.py</div>
+                        <p>Interfaces with the MCP Server to pull Prometheus metrics and Grafana dashboards. If the MCP connection fails, it gracefully falls back to a rich simulated Prometheus payload for demo purposes.</p>
+                        <span class="tag">Reactive</span>
                     </div>
                 </div>
-                <div class="agent-card card-3d">
-                    <div class="card-inner">
-                        <div class="agent-num">3</div>
+                <div class="agent-row">
+                    <div class="agent-index">3</div>
+                    <div class="agent-body">
                         <h3>Root Cause Analysis Agent</h3>
-                        <p class="agent-file"><code>agents/rca_agent.py</code></p>
-                        <p>Acts as a <strong>Manager Agent</strong>. Assesses incident complexity and delegates work to two specialized subagents: a <em>Code Analysis Subagent</em> and an <em>Infrastructure Subagent</em>. It then synthesizes their findings into a cohesive root cause hypothesis.</p>
-                        <div class="agent-tag tag-manager">Manager + Subagents</div>
+                        <div class="agent-file">agents/rca_agent.py</div>
+                        <p>Acts as a <strong>Manager Agent</strong>. Assesses incident complexity and delegates work to two specialized subagents: a Code Analysis Subagent and an Infrastructure Subagent. It then synthesizes their findings into a cohesive root cause hypothesis.</p>
+                        <span class="tag tag-clay">Manager + Subagents</span>
                     </div>
                 </div>
-                <div class="agent-card card-3d">
-                    <div class="card-inner">
-                        <div class="agent-num">4</div>
+                <div class="agent-row">
+                    <div class="agent-index">4</div>
+                    <div class="agent-body">
                         <h3>Fix Generation Agent</h3>
-                        <p class="agent-file"><code>agents/fix_agent.py</code></p>
+                        <div class="agent-file">agents/fix_agent.py</div>
                         <p>Receives the root cause hypothesis and the original code context. Uses Gemini 2.5 Pro to generate a complete, production-grade code patch (e.g., a memory leak fix, a config rollback, a circuit breaker implementation).</p>
-                        <div class="agent-tag tag-reactive">Reactive</div>
+                        <span class="tag">Reactive</span>
                     </div>
                 </div>
-                <div class="agent-card card-3d">
-                    <div class="card-inner">
-                        <div class="agent-num">5</div>
+                <div class="agent-row">
+                    <div class="agent-index">5</div>
+                    <div class="agent-body">
                         <h3>Validation Agent</h3>
-                        <p class="agent-file"><code>agents/validation_agent.py</code></p>
-                        <p>Runs simulated DevSecOps checks on the generated patch: static analysis, dependency vulnerability scanning, unit test validation, and code style compliance. Produces a pass/fail report with recommendations.</p>
-                        <div class="agent-tag tag-reactive">Reactive</div>
+                        <div class="agent-file">agents/validation_agent.py</div>
+                        <p>Runs simulated DevSecOps checks on the generated patch: static analysis, dependency vulnerability scanning, unit test validation, and code style compliance. Produces a pass/fail report.</p>
+                        <span class="tag">Reactive</span>
                     </div>
                 </div>
-                <div class="agent-card card-3d">
-                    <div class="card-inner">
-                        <div class="agent-num">6</div>
+                <div class="agent-row">
+                    <div class="agent-index">6</div>
+                    <div class="agent-body">
                         <h3>Deployment Agent</h3>
-                        <p class="agent-file"><code>agents/deployment_agent.py</code></p>
-                        <p>Interfaces with the <strong>GitLab MCP Server</strong> to create a Merge Request containing the validated patch. Returns the MR URL so the on-call team can review and merge with one click.</p>
-                        <div class="agent-tag tag-mcp">MCP Integration</div>
+                        <div class="agent-file">agents/deployment_agent.py</div>
+                        <p>Interfaces with the GitLab MCP Server to create a Merge Request containing the validated patch. Returns the MR URL so the on-call team can review and merge with one click.</p>
+                        <span class="tag tag-amber">MCP Integration</span>
                     </div>
                 </div>
-                <div class="agent-card card-3d">
-                    <div class="card-inner">
-                        <div class="agent-num">7</div>
+                <div class="agent-row">
+                    <div class="agent-index">7</div>
+                    <div class="agent-body">
                         <h3>Postmortem Agent</h3>
-                        <p class="agent-file"><code>agents/postmortem_agent.py</code></p>
+                        <div class="agent-file">agents/postmortem_agent.py</div>
                         <p>Generates a comprehensive markdown incident postmortem including: timeline of events, root cause analysis, fix applied, blast radius, lessons learned, and preventive recommendations.</p>
-                        <div class="agent-tag tag-reactive">Reactive</div>
+                        <span class="tag">Reactive</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3D Workflow -->
-    <section id="workflow" class="section section-dark">
+    <div class="divider"></div>
+
+    <!-- Workflow -->
+    <section id="workflow" class="section section-alt">
         <div class="section-inner">
-            <h2 class="section-title">Incident Workflow Pipeline</h2>
-            <p class="section-desc">Follow the data as it flows through the autonomous healing pipeline.</p>
-            <div class="pipeline-3d">
-                <div class="pipeline-stage" style="--i:0">
-                    <div class="stage-card">
-                        <div class="stage-num">01</div>
-                        <h3>Trigger</h3>
-                        <p>A GitLab webhook fires, the proactive scan detects an anomaly, or the operator clicks the dashboard button.</p>
-                    </div>
+            <div class="section-label">Workflow</div>
+            <h2 class="section-heading">Incident response pipeline</h2>
+            <p class="section-sub">Follow the data as it flows through the autonomous healing pipeline.</p>
+
+            <div class="pipeline">
+                <div class="pipe-step">
+                    <div class="pipe-num">01</div>
+                    <h3>Trigger</h3>
+                    <p>A GitLab webhook fires, the proactive scan detects an anomaly, or the operator clicks the dashboard button.</p>
                 </div>
-                <div class="pipeline-connector"><span>→</span></div>
-                <div class="pipeline-stage" style="--i:1">
-                    <div class="stage-card">
-                        <div class="stage-num">02</div>
-                        <h3>Alert Triage</h3>
-                        <p>Gemini classifies severity, maps affected services, and structures the alert for downstream processing.</p>
-                    </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">02</div>
+                    <h3>Alert Triage</h3>
+                    <p>Gemini classifies severity, maps affected services, and structures the alert for downstream processing.</p>
                 </div>
-                <div class="pipeline-connector"><span>→</span></div>
-                <div class="pipeline-stage" style="--i:2">
-                    <div class="stage-card">
-                        <div class="stage-num">03</div>
-                        <h3>Metric Collection</h3>
-                        <p>Prometheus metrics, error rates, CPU/memory trends, and active alerts are gathered via MCP or fallback.</p>
-                    </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">03</div>
+                    <h3>Metric Collection</h3>
+                    <p>Prometheus metrics, error rates, CPU/memory trends, and active alerts are gathered via MCP or fallback.</p>
                 </div>
-                <div class="pipeline-connector"><span>→</span></div>
-                <div class="pipeline-stage" style="--i:3">
-                    <div class="stage-card">
-                        <div class="stage-num">04</div>
-                        <h3>Root Cause Analysis</h3>
-                        <p>The RCA Manager spins up Code Analysis and Infrastructure Subagents, then synthesizes findings.</p>
-                    </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">04</div>
+                    <h3>Root Cause Analysis</h3>
+                    <p>The RCA Manager spins up Code Analysis and Infrastructure Subagents, then synthesizes findings.</p>
                 </div>
-                <div class="pipeline-connector"><span>→</span></div>
-                <div class="pipeline-stage" style="--i:4">
-                    <div class="stage-card">
-                        <div class="stage-num">05</div>
-                        <h3>Patch Generation</h3>
-                        <p>Gemini writes a production-grade code fix targeting the specific root cause identified.</p>
-                    </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">05</div>
+                    <h3>Patch Generation</h3>
+                    <p>Gemini writes a production-grade code fix targeting the specific root cause identified.</p>
                 </div>
-                <div class="pipeline-connector"><span>→</span></div>
-                <div class="pipeline-stage" style="--i:5">
-                    <div class="stage-card">
-                        <div class="stage-num">06</div>
-                        <h3>Validate & Deploy</h3>
-                        <p>The patch is security-checked, validated, and a Merge Request is opened on GitLab via MCP.</p>
-                    </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">06</div>
+                    <h3>Validate &amp; Deploy</h3>
+                    <p>The patch is security-checked, validated, and a Merge Request is opened on GitLab via MCP.</p>
                 </div>
-                <div class="pipeline-connector"><span>→</span></div>
-                <div class="pipeline-stage" style="--i:6">
-                    <div class="stage-card">
-                        <div class="stage-num">07</div>
-                        <h3>Postmortem</h3>
-                        <p>A full incident report is auto-generated with timeline, analysis, fix, and prevention steps.</p>
-                    </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">07</div>
+                    <h3>Postmortem</h3>
+                    <p>A full incident report is auto-generated with timeline, analysis, fix, and prevention steps.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Codebase Breakdown -->
+    <div class="divider"></div>
+
+    <!-- Codebase -->
     <section id="files" class="section">
         <div class="section-inner">
-            <h2 class="section-title">Codebase Breakdown</h2>
-            <p class="section-desc">Every file in the repository explained.</p>
-            <div class="file-tree">
-                <div class="file-group">
-                    <h3 class="file-group-title">📁 Root</h3>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>main.py</code>
-                            <span class="file-badge">Entrypoint</span>
-                            <p>The Flask web server. Serves the dashboard UI at <code>/</code>, handles GitLab webhooks at <code>/webhook/gitlab</code>, exposes the proactive scan at <code>/api/proactive-check</code>, and initializes the APScheduler background cron job that runs the Proactive Monitoring Agent every 10 minutes.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>requirements.txt</code>
-                            <span class="file-badge">Dependencies</span>
-                            <p>Python dependencies: <code>google-genai</code>, <code>google-adk</code>, <code>flask</code>, <code>python-dotenv</code>, <code>requests</code>, <code>mcp</code>, <code>apscheduler</code>.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>Dockerfile</code>
-                            <span class="file-badge">Container</span>
-                            <p>Docker container definition for deploying the platform to Google Cloud Run or any containerized environment.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>.env</code>
-                            <span class="file-badge">Secrets</span>
-                            <p>Environment variables file (git-ignored). Contains <code>GEMINI_API_KEY</code> for authenticating with the Google GenAI SDK.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-label">Codebase</div>
+            <h2 class="section-heading">Every file explained</h2>
 
-                <div class="file-group">
-                    <h3 class="file-group-title">📁 agents/</h3>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>llm_helper.py</code>
-                            <span class="file-badge">Core LLM</span>
-                            <p>Centralized Gemini integration module. All agents call <code>ask_gemini(system_prompt, user_prompt)</code> from this file. It initializes the <code>google.genai</code> client with the API key and sends requests to <code>gemini-2.5-pro</code>.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>root_agent.py</code>
-                            <span class="file-badge">Orchestrator</span>
-                            <p>The main orchestrator. Chains all 7 agents sequentially: Alert → Observability → RCA → Fix → Validation → Deployment → Postmortem. Returns a unified context dictionary consumed by the frontend.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>monitoring_agent.py</code>
-                            <span class="file-badge">Proactive</span>
-                            <p>The proactive scanner. Fetches metrics, sends them to Gemini asking for leading failure indicators, and returns a synthetic alert payload if an anomaly is detected.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>alert_agent.py</code>
-                            <span class="file-badge">Agent</span>
-                            <p>Parses raw webhook/alert payloads. Uses Gemini to classify severity and extract the affected service name, pipeline ID, and failure details.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>observability_agent.py</code>
-                            <span class="file-badge">Agent</span>
-                            <p>Calls the MCP server for Prometheus metrics. On failure, injects a rich simulated payload containing memory leak trends, CPU spikes, OOM alerts, and Grafana dashboard links.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>rca_agent.py</code>
-                            <span class="file-badge">Manager</span>
-                            <p>Implements the <strong>Subagent Delegation Pattern</strong>. Spins up a Code Analysis Subagent and an Infrastructure Subagent (separate Gemini calls with focused prompts), then synthesizes their findings into a unified root cause hypothesis.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>fix_agent.py</code>
-                            <span class="file-badge">Agent</span>
-                            <p>Generates a production-grade code patch using Gemini, targeting the specific fault identified by the RCA Agent.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>validation_agent.py</code>
-                            <span class="file-badge">Agent</span>
-                            <p>Runs simulated DevSecOps validation: SAST analysis, dependency vulnerability scanning, unit test coverage, and code style compliance checks.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>deployment_agent.py</code>
-                            <span class="file-badge">MCP</span>
-                            <p>Creates a GitLab Merge Request via the MCP protocol, attaching the validated patch and the RCA summary as the MR description.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>postmortem_agent.py</code>
-                            <span class="file-badge">Agent</span>
-                            <p>Generates a comprehensive markdown incident postmortem report including timeline, blast radius, fix details, and preventive recommendations.</p>
-                        </div>
-                    </div>
+            <div class="file-section">
+                <h3 class="file-group-title">Root</h3>
+                <div class="file-row">
+                    <code class="file-name">main.py</code>
+                    <span class="file-badge">Entrypoint</span>
+                    <p>The Flask web server. Serves the dashboard UI at <code>/</code>, handles GitLab webhooks at <code>/webhook/gitlab</code>, exposes the proactive scan at <code>/api/proactive-check</code>, and initializes the APScheduler background cron job that runs the Proactive Monitoring Agent every 10 minutes.</p>
                 </div>
-
-                <div class="file-group">
-                    <h3 class="file-group-title">📁 tools/</h3>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>gitlab_mcp_tools.py</code>
-                            <span class="file-badge">MCP Client</span>
-                            <p>MCP client implementation using the Python <code>mcp</code> SDK. Connects to the GitLab MCP Server via stdio transport (<code>npx mcp-remote</code>). Contains <code>call_gitlab_tool_sync()</code> — the synchronous wrapper used by all agents. Currently mocked for hackathon demo.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>metrics_mcp_tools.py</code>
-                            <span class="file-badge">Metrics</span>
-                            <p>Utility module for fetching infrastructure metrics. Designed to interface with Prometheus/Grafana endpoints or MCP metric tools.</p>
-                        </div>
-                    </div>
+                <div class="file-row">
+                    <code class="file-name">requirements.txt</code>
+                    <span class="file-badge">Dependencies</span>
+                    <p>Python dependencies: <code>google-genai</code>, <code>google-adk</code>, <code>flask</code>, <code>python-dotenv</code>, <code>requests</code>, <code>mcp</code>, <code>apscheduler</code>.</p>
                 </div>
+                <div class="file-row">
+                    <code class="file-name">Dockerfile</code>
+                    <span class="file-badge">Container</span>
+                    <p>Docker container definition for deploying the platform to Google Cloud Run or any containerized environment.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">.env</code>
+                    <span class="file-badge">Secrets</span>
+                    <p>Environment variables file (git-ignored). Contains <code>GEMINI_API_KEY</code> for authenticating with the Google GenAI SDK.</p>
+                </div>
+            </div>
 
-                <div class="file-group">
-                    <h3 class="file-group-title">📁 templates/ & static/</h3>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>templates/index.html</code>
-                            <span class="file-badge">UI</span>
-                            <p>The main dashboard HTML. Split-screen layout: agent result cards on the left, a live terminal stream on the right. Contains two action buttons for reactive and proactive triggers.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>static/style.css</code>
-                            <span class="file-badge">Styles</span>
-                            <p>Dark-mode glassmorphic CSS with vibrant gradients, blur effects, smooth micro-animations, and a macOS-style terminal window aesthetic.</p>
-                        </div>
-                    </div>
-                    <div class="file-item card-3d">
-                        <div class="card-inner">
-                            <code>static/app.js</code>
-                            <span class="file-badge">Logic</span>
-                            <p>Frontend JavaScript. Handles button click events, sends fetch requests to the Flask API, renders mock terminal logs with timed delays, and implements a typewriter animation for Gemini response rendering.</p>
-                        </div>
-                    </div>
+            <div class="file-section">
+                <h3 class="file-group-title">agents/</h3>
+                <div class="file-row">
+                    <code class="file-name">llm_helper.py</code>
+                    <span class="file-badge">Core LLM</span>
+                    <p>Centralized Gemini integration module. All agents call <code>ask_gemini(system_prompt, user_prompt)</code> from this file. It initializes the <code>google.genai</code> client with the API key and sends requests to <code>gemini-2.5-pro</code>.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">root_agent.py</code>
+                    <span class="file-badge">Orchestrator</span>
+                    <p>The main orchestrator. Chains all 7 agents sequentially: Alert → Observability → RCA → Fix → Validation → Deployment → Postmortem. Returns a unified context dictionary consumed by the frontend.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">monitoring_agent.py</code>
+                    <span class="file-badge">Proactive</span>
+                    <p>The proactive scanner. Fetches metrics, sends them to Gemini asking for leading failure indicators, and returns a synthetic alert payload if an anomaly is detected.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">alert_agent.py</code>
+                    <span class="file-badge">Agent</span>
+                    <p>Parses raw webhook/alert payloads. Uses Gemini to classify severity and extract the affected service name, pipeline ID, and failure details.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">observability_agent.py</code>
+                    <span class="file-badge">Agent</span>
+                    <p>Calls the MCP server for Prometheus metrics. On failure, injects a rich simulated payload containing memory leak trends, CPU spikes, OOM alerts, and Grafana dashboard links.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">rca_agent.py</code>
+                    <span class="file-badge">Manager</span>
+                    <p>Implements the Subagent Delegation Pattern. Spins up a Code Analysis Subagent and an Infrastructure Subagent (separate Gemini calls with focused prompts), then synthesizes their findings into a unified root cause hypothesis.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">fix_agent.py</code>
+                    <span class="file-badge">Agent</span>
+                    <p>Generates a production-grade code patch using Gemini, targeting the specific fault identified by the RCA Agent.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">validation_agent.py</code>
+                    <span class="file-badge">Agent</span>
+                    <p>Runs simulated DevSecOps validation: SAST analysis, dependency vulnerability scanning, unit test coverage, and code style compliance checks.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">deployment_agent.py</code>
+                    <span class="file-badge">MCP</span>
+                    <p>Creates a GitLab Merge Request via the MCP protocol, attaching the validated patch and the RCA summary as the MR description.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">postmortem_agent.py</code>
+                    <span class="file-badge">Agent</span>
+                    <p>Generates a comprehensive markdown incident postmortem report including timeline, blast radius, fix details, and preventive recommendations.</p>
+                </div>
+            </div>
+
+            <div class="file-section">
+                <h3 class="file-group-title">tools/</h3>
+                <div class="file-row">
+                    <code class="file-name">gitlab_mcp_tools.py</code>
+                    <span class="file-badge">MCP Client</span>
+                    <p>MCP client implementation using the Python <code>mcp</code> SDK. Connects to the GitLab MCP Server via stdio transport (<code>npx mcp-remote</code>). Contains <code>call_gitlab_tool_sync()</code>—the synchronous wrapper used by all agents. Currently mocked for hackathon demo.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">metrics_mcp_tools.py</code>
+                    <span class="file-badge">Metrics</span>
+                    <p>Utility module for fetching infrastructure metrics. Designed to interface with Prometheus/Grafana endpoints or MCP metric tools.</p>
+                </div>
+            </div>
+
+            <div class="file-section">
+                <h3 class="file-group-title">templates/ &amp; static/</h3>
+                <div class="file-row">
+                    <code class="file-name">templates/index.html</code>
+                    <span class="file-badge">UI</span>
+                    <p>The main dashboard HTML. Split-screen layout: agent result cards on the left, a live terminal stream on the right. Contains two action buttons for reactive and proactive triggers.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">static/style.css</code>
+                    <span class="file-badge">Styles</span>
+                    <p>Dark-mode glassmorphic CSS with vibrant gradients, blur effects, smooth micro-animations, and a macOS-style terminal window aesthetic.</p>
+                </div>
+                <div class="file-row">
+                    <code class="file-name">static/app.js</code>
+                    <span class="file-badge">Logic</span>
+                    <p>Frontend JavaScript. Handles button click events, sends fetch requests to the Flask API, renders mock terminal logs with timed delays, and implements a typewriter animation for Gemini response rendering.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="divider"></div>
+
     <!-- Integration Guide -->
-    <section id="integrate" class="section section-dark">
+    <section id="integrate" class="section section-alt">
         <div class="section-inner">
-            <h2 class="section-title">Integration Guide</h2>
-            <p class="section-desc">How to deploy Always-On-CallSRE in your own infrastructure.</p>
-            <div class="integrate-steps">
-                <div class="step card-3d" style="--i:0">
-                    <div class="card-inner">
-                        <div class="step-num">1</div>
-                        <h3>Clone & Install</h3>
+            <div class="section-label">Integration</div>
+            <h2 class="section-heading">Deploy in your infrastructure</h2>
+
+            <div class="steps-list">
+                <div class="step-row">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <h3>Clone &amp; Install</h3>
                         <pre><code>git clone https://github.com/Saaalil/OnCallSRE.git
 cd OnCallSRE
 pip install -r requirements.txt</code></pre>
                     </div>
                 </div>
-                <div class="step card-3d" style="--i:1">
-                    <div class="card-inner">
-                        <div class="step-num">2</div>
+                <div class="step-row">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
                         <h3>Configure Environment</h3>
                         <pre><code># Create a .env file in the root
 GEMINI_API_KEY=your_google_genai_api_key</code></pre>
                         <p>Get your API key from <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a>.</p>
                     </div>
                 </div>
-                <div class="step card-3d" style="--i:2">
-                    <div class="card-inner">
-                        <div class="step-num">3</div>
+                <div class="step-row">
+                    <div class="step-num">3</div>
+                    <div class="step-body">
                         <h3>Connect GitLab MCP</h3>
                         <p>To enable live MCP (creating real Merge Requests), update <code>tools/gitlab_mcp_tools.py</code>:</p>
                         <pre><code># Uncomment the real MCP client code
@@ -524,27 +424,27 @@ GEMINI_API_KEY=your_google_genai_api_key</code></pre>
 # Endpoint: https://gitlab.com/api/v4/mcp</code></pre>
                     </div>
                 </div>
-                <div class="step card-3d" style="--i:3">
-                    <div class="card-inner">
-                        <div class="step-num">4</div>
+                <div class="step-row">
+                    <div class="step-num">4</div>
+                    <div class="step-body">
                         <h3>Connect Prometheus</h3>
                         <p>To pull real infrastructure metrics, update <code>agents/observability_agent.py</code> to point to your Prometheus endpoint instead of the fallback mock payload.</p>
                         <pre><code># Replace the mock data with:
 # requests.get("http://your-prometheus:9090/api/v1/query")</code></pre>
                     </div>
                 </div>
-                <div class="step card-3d" style="--i:4">
-                    <div class="card-inner">
-                        <div class="step-num">5</div>
+                <div class="step-row">
+                    <div class="step-num">5</div>
+                    <div class="step-body">
                         <h3>Configure GitLab Webhook</h3>
                         <p>In your GitLab project, go to <strong>Settings → Webhooks</strong> and point it to:</p>
                         <pre><code>https://your-deployed-url/webhook/gitlab
 # Trigger: Pipeline events</code></pre>
                     </div>
                 </div>
-                <div class="step card-3d" style="--i:5">
-                    <div class="card-inner">
-                        <div class="step-num">6</div>
+                <div class="step-row">
+                    <div class="step-num">6</div>
+                    <div class="step-body">
                         <h3>Deploy to Cloud Run</h3>
                         <pre><code>gcloud builds submit --tag gcr.io/PROJECT/oncallsre
 gcloud run deploy oncallsre \
@@ -557,26 +457,22 @@ gcloud run deploy oncallsre \
         </div>
     </section>
 
+    <div class="divider"></div>
+
     <!-- Tech Stack -->
     <section id="tech" class="section">
         <div class="section-inner">
-            <h2 class="section-title">Technology Stack</h2>
-            <div class="tech-orbit">
-                <div class="orbit-center">
-                    <span>Always-On-CallSRE</span>
-                </div>
-                <div class="orbit-ring ring-1">
-                    <div class="tech-badge" style="--angle:0deg">Gemini 2.5 Pro</div>
-                    <div class="tech-badge" style="--angle:90deg">Flask</div>
-                    <div class="tech-badge" style="--angle:180deg">MCP SDK</div>
-                    <div class="tech-badge" style="--angle:270deg">APScheduler</div>
-                </div>
-                <div class="orbit-ring ring-2">
-                    <div class="tech-badge" style="--angle:45deg">Python 3.14</div>
-                    <div class="tech-badge" style="--angle:135deg">Google ADK</div>
-                    <div class="tech-badge" style="--angle:225deg">GitLab API</div>
-                    <div class="tech-badge" style="--angle:315deg">Prometheus</div>
-                </div>
+            <div class="section-label">Technology</div>
+            <h2 class="section-heading">Built with</h2>
+            <div class="tech-grid">
+                <div class="tech-item"><div class="tech-name">Gemini 2.5 Pro</div><div class="tech-desc">LLM Engine</div></div>
+                <div class="tech-item"><div class="tech-name">Flask</div><div class="tech-desc">Web Server</div></div>
+                <div class="tech-item"><div class="tech-name">MCP SDK</div><div class="tech-desc">Tool Protocol</div></div>
+                <div class="tech-item"><div class="tech-name">APScheduler</div><div class="tech-desc">Cron Jobs</div></div>
+                <div class="tech-item"><div class="tech-name">Python 3.14</div><div class="tech-desc">Runtime</div></div>
+                <div class="tech-item"><div class="tech-name">Google ADK</div><div class="tech-desc">Agent Framework</div></div>
+                <div class="tech-item"><div class="tech-name">GitLab API</div><div class="tech-desc">Repository</div></div>
+                <div class="tech-item"><div class="tech-name">Prometheus</div><div class="tech-desc">Observability</div></div>
             </div>
         </div>
     </section>
@@ -584,9 +480,9 @@ gcloud run deploy oncallsre \
     <!-- Footer -->
     <footer>
         <div class="footer-inner">
-            <p>Built for the <strong>GitLab Duo Agent Platform Hackathon</strong></p>
-            <p class="footer-sub">Always-On-CallSRE — Autonomous AI On-Call SRE Agent Platform</p>
-            <a href="https://github.com/Saaalil/OnCallSRE" target="_blank" class="btn btn-outline btn-sm">View Source on GitHub</a>
+            <p class="footer-title">Always-On-CallSRE</p>
+            <p class="footer-sub">Autonomous AI On-Call SRE Agent Platform<br>Built for the GitLab Duo Agent Platform Hackathon</p>
+            <a href="https://github.com/Saaalil/OnCallSRE" target="_blank" class="btn btn-outline btn-sm">View on GitHub ↗</a>
         </div>
     </footer>
 
